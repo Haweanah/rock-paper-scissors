@@ -15,23 +15,20 @@ function getComputerChoice () {
     return "scissors"
    }  
 }
-console.log(getComputerChoice())
 
 /** get human choice */
-let humanChoice = prompt("Enter rock, paper, or scissors")
 
 function getHumanChoice () {
-    if (humanChoice) {
+    let humanChoice = prompt("Enter rock, paper, or scissors")
         return humanChoice
-    }
+    
 }
-console.log(humanChoice)
-console.log(getHumanChoice())
 
 /** Write logic to play a single round */
 function playRound (humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase()
-    if (humanChoice === "rock" && computerChoice === "rock") {
+    humanChoice = humanChoice?.toLowerCase()
+    /**
+     * if (humanChoice === "rock" && computerChoice === "rock") {
         return console.log (`Tie\n${humanScore}\ncomputerScore:  ${computerScore}`)
     } else  if (humanChoice === "paper" && computerChoice === "paper") {
         return console.log (`Tie\nhumanScore: ${humanScore}\ncomputerScore:  ${computerScore}`)
@@ -60,7 +57,38 @@ function playRound (humanChoice, computerChoice) {
     else  if (computerChoice === "paper" && humanChoice === "rock") {
         computerScore++
         return console.log (`Computer wins!!\nhumanScore: ${humanScore}\ncomputerScore:  ${computerScore}`)
+    }*/
+    if (computerChoice === humanChoice) {
+        console.log(`Tie\nhumanScore: ${humanScore}\ncomputerScore: ${computerScore}`)
+    } else if (computerChoice === "rock" && humanChoice === "scissors" || computerChoice === "scissors" && humanChoice === "paper" || computerChoice === "paper" && humanChoice === "rock") {
+        computerScore++
+        console.log(`Computer wins\nhumanScore: ${humanScore}\ncomputerScore: ${computerScore}`)
+    } else {
+        humanScore++
+        console.log(`You win\nhumanScore: ${humanScore}\ncomputerScore: ${computerScore}`)
     }
-}
+    }
 
-playRound(getHumanChoice(), getComputerChoice())
+/** write the logic to play the entire game */
+function playGame () {
+    for(let round = 1; round <= 5; round++) {
+        console.log(`Round ${round}`)
+        const humanChoice = getHumanChoice()
+        const computerChoice = getComputerChoice()
+        playRound(humanChoice, computerChoice)
+    }
+    console.log("Game over")
+    console.log(`Final Score`);
+    console.log(`Human: ${humanScore}`);
+    console.log(`Computer: ${computerScore}`)
+    if (humanScore > computerScore) {
+    console.log("You won the game!");
+}
+else if (computerScore > humanScore) {
+    console.log("Computer won the game!");
+}
+else {
+    console.log("The game is a tie!");
+}
+}
+playGame();

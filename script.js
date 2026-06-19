@@ -1,14 +1,25 @@
 /** get computer choice */
-let choice = Math.floor((Math.random() * 10) + 1);
+let computerChoice = Math.floor((Math.random() * 10) + 1);
 
-function getComputerChoice (choice) {
-       if (choice <= 3) {
+function getComputerChoice (computerChoice) {
+       if (computerChoice <= 3) {
     return "rock"
-   } else if(choice > 3 && choice <=6) {
+   } else if(computerChoice > 3 && computerChoice <=6) {
     return "paper"
    } else {
     return "scissors"
    }  
 }
-console.log(choice)
+console.log(computerChoice)
 console.log(getComputerChoice())
+
+/** get human choice */
+let humanChoice = prompt("Enter rock, paper, or scissors")
+
+function getHumanChoice () {
+    if (humanChoice) {
+        return humanChoice
+    }
+}
+console.log(humanChoice)
+console.log(getHumanChoice())
